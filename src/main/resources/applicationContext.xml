@@ -20,5 +20,18 @@
           class="org.example.ReggyMusic">
     </bean>
 
+    <bean id="musicPlayerForClassic"
+          class="org.example.PlayerOfMusic">
+        <constructor-arg ref="classicBean"/>
+    </bean>
 
+    <bean id="musicPlayerForRock"
+          class="org.example.PlayerOfMusic">
+        <constructor-arg ref="rockBean"/>
+    </bean>
+
+    <bean id="musicPlayerForReggy"
+          class="org.example.PlayerOfMusic">
+        <constructor-arg ref="reggyBean"/>
+    </bean>
 </beans>
