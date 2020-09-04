@@ -8,12 +8,11 @@ public class BeanCompile {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        PlayerOfMusic playerOfMusic = context.getBean("musicPlayerForClassic", PlayerOfMusic.class);
+        PlayerOfMusic playerOfMusic = context.getBean("musicPlayer", PlayerOfMusic.class);
         playerOfMusic.playMusic();
-        PlayerOfMusic playerOfMusic2 = context.getBean("musicPlayerForRock", PlayerOfMusic.class);
-        playerOfMusic2.playMusic();
-        PlayerOfMusic playerOfMusic3 = context.getBean("musicPlayerForReggy", PlayerOfMusic.class);
-        playerOfMusic3.playMusic();
+        System.out.println(playerOfMusic.getName());
+        System.out.println(playerOfMusic.getVolume());
+
         context.close();
     }
 }

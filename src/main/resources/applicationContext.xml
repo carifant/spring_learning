@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-
+    <context:property-placeholder location="playerOfMusic.properties"/>
     <bean id="classicBean"
           class="org.example.ClassicalMusic">
     </bean>
@@ -20,18 +20,18 @@
           class="org.example.ReggyMusic">
     </bean>
 
-    <bean id="musicPlayerForClassic"
+    <bean id="musicPlayer"
           class="org.example.PlayerOfMusic">
-        <constructor-arg ref="classicBean"/>
+        <property name="listOfMusic">
+            <list>
+                <ref bean="classicBean"/>
+                <ref bean="rockBean"/>
+                <ref bean="reggyBean"/>
+            </list>
+        </property>
+        <property name="name" value="${playerOfMusic.name}"/>
+        <property name="volume" value="${playerOfMusic.volume}"/>
+
     </bean>
 
-    <bean id="musicPlayerForRock"
-          class="org.example.PlayerOfMusic">
-        <constructor-arg ref="rockBean"/>
-    </bean>
-
-    <bean id="musicPlayerForReggy"
-          class="org.example.PlayerOfMusic">
-        <constructor-arg ref="reggyBean"/>
-    </bean>
 </beans>

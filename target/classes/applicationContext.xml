@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+<context:property-placeholder location="playerOfMusic.properties"/>
+    <bean id="classicBean"
+          class="org.example.ClassicalMusic">
+    </bean>
 
-  <bean id="classicBean"
-        class="org.example.ClassicalMusic">
-  </bean>
+    <bean id="rockBean"
+          class="org.example.RockMusic">
+    </bean>
 
-  <bean id="rockBean"
-        class="org.example.RockMusic">
-  </bean>
+    <bean id="reggyBean"
+          class="org.example.ReggyMusic">
+    </bean>
 
-  <bean id="reggyBean"
-        class="org.example.ReggyMusic">
-  </bean>
+    <bean id="musicPlayer"
+          class="org.example.PlayerOfMusic">
+        <property name="listOfMusic">
+        <list>
+            <ref bean="classicBean"/>
+            <ref bean="rockBean"/>
+            <ref bean="reggyBean"/>
+        </list>
+        </property>
+        <property name="name" value="${playerOfMusic.name}"/>
+        <property name="volume" value="${playerOfMusic.volume}"/>
 
+    </bean>
 
 </beans>
