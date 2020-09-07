@@ -9,9 +9,9 @@ public class BeanCompile {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         PlayerOfMusic playerOfMusic = context.getBean("musicPlayer", PlayerOfMusic.class);
+        System.out.println(playerOfMusic.getVolume() + playerOfMusic.getName());
         playerOfMusic.playMusic();
-        System.out.println(playerOfMusic.getName());
-        System.out.println(playerOfMusic.getVolume());
+
 
         context.close();
     }

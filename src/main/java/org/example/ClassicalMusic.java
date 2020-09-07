@@ -1,5 +1,11 @@
 package org.example;
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component
 public class ClassicalMusic implements Music {
 
     private ClassicalMusic() {
@@ -20,5 +26,15 @@ public class ClassicalMusic implements Music {
     @Override
     public String getSong() {
         return "four seasons";
+    }
+
+    @PreDestroy
+    public void doMyDestroy() {
+        System.out.println("i will destroyed");
+    }
+
+    @PostConstruct
+    public void doMyCreate() {
+        System.out.println("I was created!");
     }
 }

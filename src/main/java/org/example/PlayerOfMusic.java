@@ -1,21 +1,32 @@
 package org.example;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component("musicPlayer")
+@Scope("prototype")
 public class PlayerOfMusic {
-    private List<Music> listOfMusic;
+
+    @Autowired
+    @Qualifier("classicalMusic")
+    private Music music;
+    @Value("${playerOfMusic.volume}")
     private int volume;
+    @Value("${playerOfMusic.name}")
     private String name;
 
     public PlayerOfMusic() {
     }
 
-    public List<Music> getListOfMusic() {
-        return listOfMusic;
+    public Music getMusic() {
+        return music;
     }
 
-    public void setListOfMusic(List<Music> listOfMusic) {
-        this.listOfMusic = listOfMusic;
+    public void setMusic(Music music) {
+        this.music = music;
     }
 
     public int getVolume() {
@@ -35,8 +46,6 @@ public class PlayerOfMusic {
     }
 
     public void playMusic() {
-        for (Music music : listOfMusic) {
-            System.out.println("now is playing: " + music.getSong());
-        }
+        System.out.println("now is playing: " + music.getSong());
     }
 }

@@ -8,34 +8,5 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="playerOfMusic.properties"/>
-    <bean id="classicBean"
-          class="org.example.ClassicalMusic"
-          factory-method="fabricMethod">
-    </bean>
-
-    <bean id="rockBean"
-          class="org.example.RockMusic"
-          factory-method="fabricMethod">
-    </bean>
-
-    <bean id="reggyBean"
-          class="org.example.ReggyMusic"
-          factory-method="fabricMethod">
-    </bean>
-
-    <bean id="musicPlayer"
-          class="org.example.PlayerOfMusic"
-          scope="prototype">
-        <property name="listOfMusic">
-            <list>
-                <ref bean="classicBean"/>
-                <ref bean="rockBean"/>
-                <ref bean="reggyBean"/>
-            </list>
-        </property>
-        <property name="name" value="${playerOfMusic.name}"/>
-        <property name="volume" value="${playerOfMusic.volume}"/>
-
-    </bean>
-
+    <context:component-scan base-package="org.example"/>
 </beans>
